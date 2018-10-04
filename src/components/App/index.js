@@ -1,20 +1,27 @@
-import React from "react";
-import { Route, Link } from "react-router-dom";
+import React, { Component } from "react";
+import { Route } from "react-router-dom";
 import Home from "../Home";
 import Top from "../Top";
+import Header from "./Header";
 
-const App = () => (
-  <div>
-    <header>
-      <Link to="/">Home</Link>
-      <Link to="/top">Checkout</Link>
-    </header>
+import { Row, Col } from "antd";
 
-    <main>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/top" component={Top} />
-    </main>
-  </div>
-);
-
-export default App;
+export default class App extends Component {
+  render() {
+    return (
+      <Row>
+        <Col span={24}>
+          <Header />
+          <Row>
+            <Col span={24}>
+              <main>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/top" component={Top} />
+              </main>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+    );
+  }
+}
